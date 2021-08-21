@@ -24,6 +24,14 @@
   #  };        
   };
 
+  # Making ready for flakes
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };  
+
   networking.hostName = "athena"; # Define your hostname.
   networking.networkmanager.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -175,10 +183,12 @@
            syntax enable
            set encoding=utf-8
            set nocompatible
+	   set backspace=indent,eol,start
+	   set expandtab
 
            filetype indent on
            filetype on
-           command! W execute 'w !sudo tee %'
+	   command! W execute 'w !sudo tee %'
            set number
 
            set incsearch
