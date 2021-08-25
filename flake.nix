@@ -12,7 +12,7 @@
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
-     # inherit system;
+      inherit system;
       config = { allowUnfree = true; }; 
     };
 
@@ -21,10 +21,15 @@
   in {
     nixosConfigurations = {
       athena = lib.nixosSystem {
-       # inherit system;
+        inherit system;
 
         modules = [
-          ./system/configuration.nix   
+          ./system/configuration.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.junko = import ./user/junko/home.nix;
+          }
         ];
       };    
     };

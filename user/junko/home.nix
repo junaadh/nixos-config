@@ -4,6 +4,19 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Junaadh";
+    userEmail = "junadh.02@gmail.com";
+
+  };
+
+  home.packages = [
+    pkgs.neovim
+    pkgs.gcc
+    pkgs.ranger
+    pkgs.python39Packages.pip
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -19,10 +32,5 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.05";
-
-  home.packages = with pkgs; [
-    dmenu
-    nmtui
-  ];
 
 }

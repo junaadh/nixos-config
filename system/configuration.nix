@@ -26,7 +26,7 @@
 
   # Making ready for flakes
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -92,6 +92,7 @@
     fontDir.enable = true;
     fonts = with pkgs; [
       inconsolata
+      font-awesome_5
       fira-mono
       fira-code
       fira-code-symbols
@@ -159,6 +160,7 @@
     #browser
     firefox
     google-chrome
+    xmobar
     tdesktop
 
     #gfx
